@@ -1,0 +1,14 @@
+<div class="auth">
+  <h6 class="auth__sign_in">Sign in</h6>
+  <form class="auth__form" [formGroup]="signInForm">
+    <app-input class="auth__form-input" [label]="'Email'" [type]="inputType.EMAIL" [formControl]="emailControl" />
+    <app-input class="auth__form-input" [label]="'Passowrd'" [type]="inputType.PASSWORD" [formControl]="passwordControl" />
+    <span class="auth__form-error">{{error}}</span>
+    <div class="auth__form__action">
+      <a class="auth__form__action-reset" routerLink="/auth/sign-up">Don't have an account?</a>
+      <a class="auth__form__action-reset" routerLink="/auth/reset-password">Reset password?</a>
+    </div>
+    <button class="auth__form-btn" [class.active]="!signInForm.invalid" [disabled]="signInForm.invalid"
+      (click)="signIn()">Sign In</button>
+  </form>
+</div>

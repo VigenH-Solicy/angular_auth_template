@@ -1,0 +1,38 @@
+<mat-form-field *ngIf="type === typeEnum.TEXT || type === typeEnum.EMAIL || type === typeEnum.PASSWORD" class="form_field">
+  <mat-label>{{ label }}</mat-label>
+  <input [type]="type" [formControl]="formControl" [(ngModel)]="value" (input)="onInputChange()" matInput>
+  <mat-error *ngIf="hasError('required')">Field is required</mat-error>
+  <mat-error *ngIf="hasError('minlength')">Minimum length is
+    {{formControl.getError('minlength')['requiredLength']}} characters</mat-error>
+  <mat-error *ngIf="hasError('maxlength')">Maximum length is
+    {{formControl.getError('maxlength')['requiredLength']}} characters</mat-error>
+  <mat-error *ngIf="hasError('userExists')"> {{formControl.getError('userExists')}}</mat-error>
+  <mat-error *ngIf="hasError('invalidEmail')"> {{formControl.getError('invalidEmail')}}</mat-error>
+  <mat-error *ngIf="hasError('upperCase')"> {{formControl.getError('upperCase')}}</mat-error>
+  <mat-error *ngIf="hasError('match')"> {{formControl.getError('match')}}</mat-error>
+  <mat-error *ngIf="hasError('spaceError')"> {{formControl.getError('spaceError')}}</mat-error>
+</mat-form-field>
+
+<div *ngIf="type === typeEnum.HINT_PASSWORD" class="password__side">
+  <mat-form-field class="form_field">
+    <mat-label>{{ label }}</mat-label>
+    <input [type]="typeEnum.PASSWORD" [formControl]="formControl" [(ngModel)]="value" (input)="onInputChange()" matInput>
+  </mat-form-field>
+  <div class="password__side__validations">
+    <span class="password__side__validations__options"
+      [class.passed]="formControl.touched && !hasError('minlength') && !hasError('required')">Password
+      minimum length is 8 characters</span>
+    <span class="password__side__validations__options"
+      [class.passed]="formControl.touched && !hasError('upperCase') && !hasError('required')">Password
+      should have one uppercase</span>
+    <span class="password__side__validations__options"
+      [class.passed]="formControl.touched && !hasError('symbol') && !hasError('required')">Password
+      should have special symbol</span>
+  </div>
+</div>
+<mat-form-field *ngIf="type === typeEnum.DATE" class="form_field">
+  <mat-label>{{ label }}</mat-label>
+  <input readonly="true" (click)="picker.open()" matInput [matDatepicker]="picker" [formControl]="formControl" [(ngModel)]="value" (input)="onInputChange()">
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

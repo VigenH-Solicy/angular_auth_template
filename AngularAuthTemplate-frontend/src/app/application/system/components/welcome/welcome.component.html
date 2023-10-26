@@ -1,0 +1,7 @@
+<div *ngIf="user" class="welcome">
+   <app-image [width]="200" [height]="200" [name]="user.image"></app-image>
+   <div class="welcome__info">
+        <h4>Welcome <strong>{{user.name}} {{user.surname}}!</strong></h4>
+        <button (click)="logout()">Log out</button>
+   </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="auth">
+    <h6 class="auth__sign_up">Sign Up</h6>
+    <div class="auth__sign_up__upload">
+        <ngx-avatar (onFileSelectedEmitter$)="onFileSelectedEmitter($event)" [fullName]="'Name Surname'" [borderRadius]="'4px'" [width]="'100px'"
+            [height]="'100px'" [background]="'#00b2ff'" [imageURL]="'../../../../assets/images/icons/default.png'"><img
+                class="auth__sign_up__upload-icon" src="../../../../assets/images/icons/camera.png" alt=""></ngx-avatar>
+    </div>
+
+    <form class="auth__form" [formGroup]="signUpForm">
+        <app-input [type]="inputType.TEXT" [label]="'Name'" [formControl]="nameControl" class="auth__form__field"
+            formControlName="name" />
+        <app-input [type]="inputType.TEXT" [label]="'Surname'" [formControl]="surnameControl" class="auth__form__field"
+            formControlName="surname" />
+        <app-input [type]="inputType.EMAIL" [label]="'Email'" [formControl]="emailControl" class="auth__form__field"
+            formControlName="email" />
+        <app-input [type]="inputType.DATE" [label]="'Date of birth'" [formControl]="dateOfBirthControl"
+            class="auth__form__field" formControlName="dateOfBirth" />
+        <app-input [type]="inputType.HINT_PASSWORD" [label]="'Password'" [formControl]="passwordControl"
+            class="auth__form__field" formControlName="password" />
+        <app-input [type]="inputType.PASSWORD" [label]="'Reenter password'" [formControl]="rePasswordControl"
+            class="auth__form__field" formControlName="rePassword" />
+
+        <div class="auth__form__action">
+            <a class="auth__form__action-reset" routerLink="/auth/sign-in">Already have an account?</a>
+            <a class="auth__form__action-reset" routerLink="/auth/reset-password">Reset password?</a>
+        </div>
+        <button class="auth__form-btn" [class.active]="!signUpForm.invalid" [disabled]="signUpForm.invalid"
+            (click)="signUp()">Sign Up</button>
+    </form>
+</div>

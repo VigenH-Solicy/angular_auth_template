@@ -1,0 +1,60 @@
+@import '../../../../assets/variables/colors.scss';
+
+.auth {
+    &__sign_up {
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 25px;
+        &__upload{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            &-icon {
+                width: 50px;
+                height: 50px;
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__field {
+            width: 100%;
+        }
+        &-btn {
+            width: 100%;
+            height: 40px;
+            border-radius: 3px;
+            border: none;
+            pointer-events: none;
+            background-color: $deactive;
+            &.active {
+                cursor: pointer;
+                pointer-events: all;
+                background-color: $blue;
+            }
+        }
+        &__action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            &-reset {
+                font-size: 12px;
+                color: $gray;
+            }
+        }
+
+    }
+}
+::ng-deep {
+    .mdc-text-field--filled:not(.mdc-text-field--disabled){
+        background-color: transparent !important;
+        margin-bottom: 12px;
+    }
+}

@@ -1,0 +1,20 @@
+.form_field {
+    width: 100% !important;
+}
+.password__side {
+    position: relative;
+    &__validations {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-29px);
+        margin-left: 15px;
+        bottom: 0;
+        &__options {
+            font-size: 12px;
+        }
+    }
+}
+
+.passed {
+    color: green;
+}
